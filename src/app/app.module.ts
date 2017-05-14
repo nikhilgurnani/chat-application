@@ -17,12 +17,15 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+
 
 const routes:Routes = [
 	{path:'', component: HomeComponent},
 	{path:'login', component: LoginComponent},
 	{path:'logout', component: LogoutComponent},
-	{path:'register-user', component: RegisterUserComponent}
+	{path:'register-user', component: RegisterUserComponent},
+	{path:':displayname', component: UserProfileComponent}
 ]
 
 @NgModule({
@@ -32,7 +35,8 @@ const routes:Routes = [
 		NavbarComponent,
 		LoginComponent,
 		RegisterUserComponent,
-		LogoutComponent
+		LogoutComponent,
+		UserProfileComponent,
 	],
 	imports: [
 		BrowserModule,
