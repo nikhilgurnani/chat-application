@@ -1,0 +1,15 @@
+<div class="containter">
+	<a [routerLink] = "['/']">Go Back</a>
+
+	<h3 class="page-header">Contact List
+		<!-- <form class="col-md-4 col-sm-4 col-lg-4 pull-right form-inline" (submit) = "addNewContact()">
+			<input type="text" name="contactEmail" placeholder="Email" class="form-control" [(ngModel)] = "contactEmail">
+			<button type="submit" value="Add Contact" class="btn btn-primary">Add Contact</button>
+		</form> -->
+	</h3>
+	<ul class="list-group col-md-4 col-sm-4 col-lg-4">
+		<li class="list-group-item" *ngFor = "let contact of contacts">
+			<a [routerLink] = "['/message/' + contact.$key]">{{contact.displayName}} ({{contact.email}})</a>
+		</li>
+	</ul>
+</div>

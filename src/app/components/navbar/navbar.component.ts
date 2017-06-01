@@ -11,15 +11,15 @@ export class NavbarComponent implements OnInit {
 
 	user:any;
 	constructor(private userPresence:UserPresenceService,
-	            private flashMessage:FlashMessagesService){
-		if(this.userPresence.afAuth.auth)
-		{
-			this.user = this.userPresence.afAuth.auth;
-			console.log(this.user);
-		}
+	            private flashMessage:FlashMessagesService)
+	{
 	}
 
 	ngOnInit(){
+		if(this.userPresence.afAuth.auth)
+		{
+			this.user = this.userPresence.afAuth.auth;
+		}
 	}
 
 	logout()

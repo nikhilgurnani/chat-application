@@ -17,7 +17,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { LogoutComponent } from './components/logout/logout.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
+import { MessageComponent } from './components/message/message.component';
 
 
 const routes:Routes = [
@@ -25,7 +26,8 @@ const routes:Routes = [
 	{path:'login', component: LoginComponent},
 	{path:'logout', component: LogoutComponent},
 	{path:'register-user', component: RegisterUserComponent},
-	{path:':displayname', component: UserProfileComponent}
+	{path: 'contacts', component: ContactsComponent},
+	{path: 'message/:uid', component: MessageComponent}
 ]
 
 @NgModule({
@@ -36,7 +38,8 @@ const routes:Routes = [
 		LoginComponent,
 		RegisterUserComponent,
 		LogoutComponent,
-		UserProfileComponent,
+		ContactsComponent,
+		MessageComponent,
 	],
 	imports: [
 		BrowserModule,
