@@ -8,12 +8,18 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-	constructor(private userPresence:UserPresenceService,
-	            private flashMessage:FlashMessagesService){
 
+	user:any;
+	constructor(private userPresence:UserPresenceService,
+	            private flashMessage:FlashMessagesService)
+	{
 	}
 
 	ngOnInit(){
+		if(this.userPresence.afAuth.auth)
+		{
+			this.user = this.userPresence.afAuth.auth;
+		}
 	}
 
 	logout()

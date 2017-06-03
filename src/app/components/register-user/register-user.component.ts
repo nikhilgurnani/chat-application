@@ -11,14 +11,13 @@ export class RegisterUserComponent implements OnInit {
 
 	email:any;
 	password:any;
-
+	name:any;
 	constructor(private firebaseService:FirebaseService,
 	            private router:Router,
 	            private userPresence: UserPresenceService) { }
 
 	onRegisterClick() {
-		
-		this.firebaseService.addUser(this.email, this.password);
+		this.firebaseService.registerUser(this.email, this.password, this.name);
 		this.router.navigate(['']);
 	}
 

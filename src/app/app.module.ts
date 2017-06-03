@@ -17,12 +17,17 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
+import { MessageComponent } from './components/message/message.component';
+
 
 const routes:Routes = [
 	{path:'', component: HomeComponent},
 	{path:'login', component: LoginComponent},
 	{path:'logout', component: LogoutComponent},
-	{path:'register-user', component: RegisterUserComponent}
+	{path:'register-user', component: RegisterUserComponent},
+	{path: 'contacts', component: ContactsComponent},
+	{path: 'message/:uid', component: MessageComponent}
 ]
 
 @NgModule({
@@ -32,7 +37,9 @@ const routes:Routes = [
 		NavbarComponent,
 		LoginComponent,
 		RegisterUserComponent,
-		LogoutComponent
+		LogoutComponent,
+		ContactsComponent,
+		MessageComponent,
 	],
 	imports: [
 		BrowserModule,
