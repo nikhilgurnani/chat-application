@@ -23,6 +23,26 @@ export class FirebaseService {
 		})
 	}
 
+	checkUser(uid)
+	{
+		let flag:any;
+		this.afd.object('/users/' + uid).subscribe(u => {
+			console.log(u);
+			if(u.$value != null)
+			{
+				console.log("User found");
+				flag = true;
+			}
+			else if(u.$value == null)
+			{
+				console.log("User not found");
+				flag = false;
+			}
+			console.log(flag);
+		});
+		return flag;
+	}
+
 	addUser(uid, email, photoURL, displayName, isVerified)
 	{
 		this.afd.object('/users/' + uid).set({email: email, displayName: displayName, photoURL: photoURL, isVerified: isVerified, contacts: null }).catch(error => {
@@ -45,8 +65,15 @@ export class FirebaseService {
 	getContactsForUser()
 	{
 		//this.contacts = this.afd.list('/users/'+this.user.uid+'/contacts/') as FirebaseListObservable<Contact[]>;
+		// let keys:any[];
+		// this.afAuth.authState.subscribe(user => {
+		// 	 this.afd.list('/users/' + user.uid + '/contacts/').subscribe(k => {
+		// 	 	console.log(k);
+		// 	 	keys = k;
+		// 	});
+		// });
 		this.users = this.afd.list('/users') as FirebaseListObservable<User[]>;
-		return this.users;
+		return this.users
 	}
 
 	addContact(email)
@@ -58,7 +85,7 @@ export class FirebaseService {
 			}
 			else 
 			{
-				this.flash.show('User not registered.' , {cssClass: 'alert alert-danger', timeout: 5000});
+				this.flash.show('User not recognised.' , {cssClass: 'alert alert-danger', timeout: 5000});
 			}
 		});
 	}

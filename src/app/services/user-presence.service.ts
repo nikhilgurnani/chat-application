@@ -20,6 +20,26 @@ export class UserPresenceService {
 			private firebaseService: FirebaseService){
 		
 		this.user = this.afAuth.authState;
+
+		this.afAuth.authState.subscribe(user => {
+			console.log(user);
+			if(user != null)
+			{
+				if(firebaseService.checkUser(user.uid))
+				{
+					console.log("User already stored");
+				}
+				else 
+				{
+					console.log("User doesn't exist");
+					firebaseService.addUser(user.uid, user.email, user.photoURL, user.displayName, user.emailVerified);
+				}
+			}
+			else if(user == null)
+			{
+				console.log("No user logged in.");
+			}
+		});
 	}
 
 
