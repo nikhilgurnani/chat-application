@@ -4,7 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import { FirebaseService }  from './firebase.service';
 import * as firebase from 'firebase/app';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { FirebaseService } from '../services/firebase.service';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Router } from '@angular/router';
 
@@ -13,20 +12,7 @@ export class UserPresenceService {
 
 	user: Observable<firebase.User> = null;
 	User:any;
-<<<<<<< HEAD
-	constructor(public afAuth:AngularFireAuth,
-		private router:Router,
-		private firebaseService: FirebaseService,
-		private flash: FlashMessagesService)
-	{
-		this.user = afAuth.authState;
-		this.afAuth.authState.subscribe(user => {
-			if (user != null)
-			{
-				if(firebaseService.checkUser(user.uid) == null)
-				{
-					
-=======
+
 	public userDetails;
 	constructor(public afd:AngularFireDatabase,
 	            public afAuth:AngularFireAuth,
@@ -48,16 +34,12 @@ export class UserPresenceService {
 				{
 					console.log("User doesn't exist");
 					firebaseService.addUser(user.uid, user.email, user.photoURL, user.displayName, user.emailVerified);
->>>>>>> 1f228e5da62d6da5bea713bdafc57fdc08c7ae93
 				}
 			}
 			else if(user == null)
 			{
-<<<<<<< HEAD
 				console.log("No user logged in");
-=======
 				console.log("No user logged in.");
->>>>>>> 1f228e5da62d6da5bea713bdafc57fdc08c7ae93
 			}
 		});
 	}
